@@ -1,16 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Add Course</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Course | Student Result Management System</title>
+
+    <link rel="stylesheet" href="Css/style.css">
 </head>
 
 <body>
 
-    <h1>Add New Course</h1>
+    <header>
+        <h1>Add New Course</h1>
+        <p>Student Result Management System</p>
+    </header>
 
-    <p>Course Registration Page is Working!</p>
+    <main class="login-container">
 
-    <a href="courses.html">Back to Courses</a>
+        <h2>Course Registration</h2>
+
+        <form id="courseForm">
+
+            <label>Course Code</label>
+            <input type="text" id="courseCode"
+                   placeholder="Example: COM 101" required>
+
+            <label>Course Title</label>
+            <input type="text" id="courseTitle"
+                   placeholder="Enter course title" required>
+
+            <label>Credit Unit</label>
+            <input type="number" id="creditUnit"
+                   placeholder="Enter credit unit" required>
+
+            <label>Department</label>
+            <input type="text" id="department"
+                   placeholder="Enter department" required>
+
+            <button type="submit">Add Course</button>
+
+        </form>
+
+        <p id="message"></p>
+
+        <p>
+            <a href="courses.html">
+                ← Back to Courses
+            </a>
+        </p>
+
+    </main>
+
+    <footer>
+        <p>Developed by TARNONGU AONDOHEMBA GODWIN</p>
+    </footer>
+
+    <script src="Js/course-registration.js"></script>
 
 </body>
 </html>
