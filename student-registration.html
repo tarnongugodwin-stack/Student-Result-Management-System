@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Registration | Result Management System</title>
+
+    <link rel="stylesheet" href="Css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Student Registration</h1>
+        <p>Student Result Management System</p>
+    </header>
+
+    <main class="login-container">
+
+        <h2>Register New Student</h2>
+
+        <form id="studentForm">
+
+            <label>Full Name</label>
+            <input type="text" id="fullname"
+                   placeholder="Enter full name" required>
+
+            <label>Matric Number</label>
+            <input type="text" id="matric"
+                   placeholder="Enter matric number" required>
+
+            <label>Department</label>
+            <input type="text" id="department"
+                   placeholder="Enter department" required>
+
+            <label>Level</label>
+            <select id="level" required>
+                <option value="">Select Level</option>
+                <option>ND I</option>
+                <option>ND II</option>
+                <option>HND I</option>
+                <option>HND II</option>
+            </select>
+
+            <label>Email Address</label>
+            <input type="email" id="email"
+                   placeholder="Enter email address" required>
+
+            <label>Password</label>
+            <input type="password" id="password"
+                   placeholder="Create password" required>
+
+            <button type="submit">Register Student</button>
+
+        </form>
+
+        <p id="message"></p>
+
+        <p>
+            <a href="students.html">
+                ← Back to Students
+            </a>
+        </p>
+
+    </main>
+
+    <footer>
+        <p>Developed by TARNONGU AONDOHEMBA GODWIN</p>
+    </footer>
+
+    <script src="Js/student-registration.js"></script>
+
+</body>
+</html>
