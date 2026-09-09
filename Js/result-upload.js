@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     const form = document.getElementById("resultForm");
-    const message = document.getElementById("message");
 
     form.addEventListener("submit", function (event) {
 
@@ -39,8 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         localStorage.setItem("results", JSON.stringify(results));
 
-        message.innerHTML =
-            "Result uploaded successfully! Grade: " + grade;
+        alert("Result uploaded successfully! Grade: " + grade);
 
         form.reset();
 
