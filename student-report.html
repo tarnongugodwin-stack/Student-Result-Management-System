@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Student Report | Student Result Management System</title>
+
+    <link rel="stylesheet" href="Css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Student Academic Report</h1>
+        <p>Student Result Management System</p>
+    </header>
+
+    <main class="dashboard-container">
+
+        <h2>Search Student Result</h2>
+
+        <p class="dashboard-text">
+            Enter a student's matric number to view academic results.
+        </p>
+
+        <div class="search-box">
+
+            <input 
+                type="text" 
+                id="searchMatric"
+                placeholder="Enter Matric Number">
+
+            <button onclick="searchResult()">
+                Search Result
+            </button>
+
+        </div>
+
+        <br>
+
+        <div id="reportResult"></div>
+
+        <br><br>
+
+        <a href="reports.html">
+            <button>← Back to Reports</button>
+        </a>
+
+    </main>
+
+    <footer>
+        <p>Developed by TARNONGU AONDOHEMBA GODWIN</p>
+    </footer>
+
+    <script src="Js/student-report.js"></script>
+
+</body>
+  </html>
