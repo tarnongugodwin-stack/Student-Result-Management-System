@@ -1,11 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    alert("Student login system loaded!");
+
     const form = document.getElementById("studentLoginForm");
-    const message = document.getElementById("loginMessage");
+
+    if (!form) {
+        alert("Login form not found!");
+        return;
+    }
 
     form.addEventListener("submit", function (event) {
 
         event.preventDefault();
+
+        alert("Login button is working!");
 
         const matricNumber = document
             .getElementById("loginMatricNumber")
@@ -20,43 +28,38 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.getItem("students")
         ) || [];
 
+        alert("Number of registered students found: " + students.length);
+
         const student = students.find(function (item) {
 
-            return item.matric.toLowerCase() ===
+            return item.matric &&
+                   item.matric.toLowerCase() ===
                    matricNumber.toLowerCase();
 
         });
 
         if (!student) {
 
-            message.innerHTML =
-                "Student not found. Please check your Matric Number.";
+            alert("Student not found!");
 
             return;
         }
 
         if (student.password !== password) {
 
-            message.innerHTML =
-                "Incorrect password. Please try again.";
+            alert("Incorrect password!");
 
             return;
         }
+
+        alert("Login successful!");
 
         localStorage.setItem(
             "loggedInStudent",
             JSON.stringify(student)
         );
 
-        message.innerHTML =
-            "Login successful! Redirecting...";
-
-        setTimeout(function () {
-
-            window.location.href =
-                "student-dashboard.html";
-
-        }, 1000);
+        window.location.href = "student-dashboard.html";
 
     });
 
