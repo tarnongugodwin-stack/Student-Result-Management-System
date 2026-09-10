@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Course Report | Student Result Management System</title>
+
+    <link rel="stylesheet" href="Css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Course Performance Report</h1>
+        <p>Student Result Management System</p>
+    </header>
+
+    <main class="dashboard-container">
+
+        <h2>Search Course Results</h2>
+
+        <p class="dashboard-text">
+            Enter a Course Code to view all students and their performance.
+        </p>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchCourse"
+                placeholder="Enter Course Code e.g. COM 101">
+
+            <button onclick="searchCourseReport()">
+                Search Course
+            </button>
+
+        </div>
+
+        <br>
+
+        <div id="courseReportResult"></div>
+
+        <br><br>
+
+        <a href="reports.html">
+            <button>← Back to Reports</button>
+        </a>
+
+    </main>
+
+    <footer>
+        <p>Developed by TARNONGU AONDOHEMBA GODWIN</p>
+    </footer>
+
+    <script src="Js/course-report.js"></script>
+
+</body>
+      </html>
