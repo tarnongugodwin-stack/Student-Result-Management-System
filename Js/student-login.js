@@ -29,7 +29,19 @@ document.addEventListener("DOMContentLoaded", function () {
         ) || [];
 
         alert("Number of registered students found: " + students.length);
-   alert(JSON.stringify(students));
+   let studentInfo = "";
+
+students.forEach(function (item, index) {
+
+    studentInfo +=
+        "STUDENT " + (index + 1) + "\n" +
+        "Name: " + item.fullname + "\n" +
+        "Matric: " + item.matric + "\n" +
+        "Password: " + item.password + "\n\n";
+
+});
+
+alert(studentInfo);
         const student = students.find(function (item) {
 
             return item.matric &&
