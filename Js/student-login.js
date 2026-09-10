@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const student = students.find(function (item) {
 
-            return item.matricNumber.toLowerCase() ===
+            return item.matric.toLowerCase() ===
                    matricNumber.toLowerCase();
 
         });
@@ -35,12 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        /*
-         Temporary password system:
-         Any registered student can use 12345
-        */
-
-        if (password !== "12345") {
+        if (student.password !== password) {
 
             message.innerHTML =
                 "Incorrect password. Please try again.";
