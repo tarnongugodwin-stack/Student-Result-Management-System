@@ -1,9 +1,7 @@
-
 document.addEventListener("DOMContentLoaded", function () {
 
-    alert("Student login system loaded!");
-
     const form = document.getElementById("studentLoginForm");
+    const message = document.getElementById("loginMessage");
 
     form.addEventListener("submit", function (event) {
 
@@ -12,7 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const matricNumber = document
             .getElementById("loginMatricNumber")
             .value
-            .trim();
+            .trim()
+            .toLowerCase();
 
         const password = document
             .getElementById("loginPassword")
@@ -23,21 +22,41 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.getItem("students")
         ) || [];
 
-        let savedMatricNumbers = "";
+        const student = students.find(function (item) {
 
-        students.forEach(function (student, index) {
-
-            savedMatricNumbers +=
-                "Student " + (index + 1) +
-                ": " + student.matric +
-                "\n";
+            return String(item.matric)
+                .trim()
+                .toLowerCase() === matricNumber;
 
         });
 
-        alert(
-            "SAVED MATRIC NUMBERS:\n\n" +
-            savedMatricNumbers
+        if (!student) {
+
+            message.innerHTML =
+                "Student not found. Please check your Matric Number.";
+
+            return;
+        }
+
+        if (String(student.password).trim() !== password) {
+
+            message.innerHTML =
+                "Incorrect password. Please try again.";
+
+            return;
+        }
+
+        localStorage.setItem(
+            "loggedInStudent",
+            JSON.stringify(student)
         );
+
+        message.innerHTML =
+            "Login successful! Redirecting...";
+
+        setTimeout(function () {
+            window.location.href = "student-dashboard.html";
+        }, 1000);
 
     });
 
