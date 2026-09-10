@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Student Dashboard | Student Result Management System</title>
+
+    <link rel="stylesheet" href="Css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Student Dashboard</h1>
+        <p>Student Result Management System</p>
+    </header>
+
+    <main class="dashboard-container">
+
+        <h2 id="welcomeStudent">Welcome Student</h2>
+
+        <p class="dashboard-text">
+            Access your academic information and results below.
+        </p>
+
+        <div class="dashboard-menu">
+
+            <a href="student-profile.html">
+                <div class="dashboard-card">
+                    <h3>👤 My Profile</h3>
+                    <p>View your personal information.</p>
+                </div>
+            </a>
+
+            <a href="my-results.html">
+                <div class="dashboard-card">
+                    <h3>📝 My Results</h3>
+                    <p>View your academic results.</p>
+                </div>
+            </a>
+
+            <a href="student-summary.html">
+                <div class="dashboard-card">
+                    <h3>📊 Academic Summary</h3>
+                    <p>View your academic performance summary.</p>
+                </div>
+            </a>
+
+            <a href="index.html" onclick="logoutStudent()">
+                <div class="dashboard-card">
+                    <h3>🚪 Logout</h3>
+                    <p>Logout from your account.</p>
+                </div>
+            </a>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>Developed by TARNONGU AONDOHEMBA GODWIN</p>
+    </footer>
+
+    <script src="Js/student-dashboard.js"></script>
+
+</body>
+  </html>
