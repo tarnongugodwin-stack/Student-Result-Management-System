@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Student Login | Student Result Management System</title>
 
     <link rel="stylesheet" href="Css/style.css">
@@ -11,39 +12,40 @@
 <body>
 
     <header>
-        <h1>Student Portal</h1>
+        <h1>Student Login</h1>
         <p>Student Result Management System</p>
     </header>
 
     <main class="login-container">
 
-        <h2>Student Login</h2>
-        <p>Please enter your details to access your results.</p>
+        <h2>Login to Your Account</h2>
 
-        <form>
+        <form id="studentLoginForm">
 
-            <label for="matric">Matriculation Number</label>
-            <input 
-                type="text" 
-                id="matric" 
-                placeholder="Enter your matric number"
-                required
-            >
+            <label>Matric Number</label>
+            <input type="text"
+                   id="loginMatricNumber"
+                   placeholder="Enter your Matric Number"
+                   required>
 
-            <label for="password">Password</label>
-            <input 
-                type="password" 
-                id="password" 
-                placeholder="Enter your password"
-                required
-            >
+            <label>Password</label>
+            <input type="password"
+                   id="loginPassword"
+                   placeholder="Enter your Password"
+                   required>
 
-            <button type="submit">Login</button>
+            <button type="submit">
+                Login
+            </button>
 
         </form>
 
+        <p id="loginMessage"></p>
+
         <p>
-            <a href="index.html">← Back to Home</a>
+            <a href="index.html">
+                ← Back to Home
+            </a>
         </p>
 
     </main>
@@ -52,5 +54,7 @@
         <p>Developed by TARNONGU AONDOHEMBA GODWIN</p>
     </footer>
 
+    <script src="Js/student-login.js"></script>
+
 </body>
-  </html>
+</html>
