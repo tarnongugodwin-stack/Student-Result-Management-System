@@ -1,19 +1,13 @@
+
 document.addEventListener("DOMContentLoaded", function () {
 
     alert("Student login system loaded!");
 
     const form = document.getElementById("studentLoginForm");
 
-    if (!form) {
-        alert("Login form not found!");
-        return;
-    }
-
     form.addEventListener("submit", function (event) {
 
         event.preventDefault();
-
-        alert("Login button is working!");
 
         const matricNumber = document
             .getElementById("loginMatricNumber")
@@ -22,56 +16,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const password = document
             .getElementById("loginPassword")
-            .value;
+            .value
+            .trim();
 
         const students = JSON.parse(
             localStorage.getItem("students")
         ) || [];
 
-        alert("Number of registered students found: " + students.length);
-   let studentInfo = "";
+        let savedMatricNumbers = "";
 
-students.forEach(function (item, index) {
+        students.forEach(function (student, index) {
 
-    studentInfo +=
-        "STUDENT " + (index + 1) + "\n" +
-        "Name: " + item.fullname + "\n" +
-        "Matric: " + item.matric + "\n" +
-        "Password: " + item.password + "\n\n";
-
-});
-
-alert(studentInfo);
-        const student = students.find(function (item) {
-
-            return item.matric &&
-                   item.matric.toLowerCase() ===
-                   matricNumber.toLowerCase();
+            savedMatricNumbers +=
+                "Student " + (index + 1) +
+                ": " + student.matric +
+                "\n";
 
         });
 
-        if (!student) {
-
-            alert("Student not found!");
-
-            return;
-        }
-
-        if (student.password !== password) {
-
-            alert("Incorrect password!");
-
-            return;
-        }
-
-        alert("Login successful!");
-
-        localStorage.setItem(
-            "loggedInStudent",
-            JSON.stringify(student)
+        alert(
+            "SAVED MATRIC NUMBERS:\n\n" +
+            savedMatricNumbers
         );
-
-        window.location.href = "student-dashboard.html";
 
     });
 
