@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     document.getElementById("welcomeStudent").innerHTML =
-        "Welcome, " + loggedInStudent.name;
+        "Welcome, " + loggedInStudent.fullname;
 
 });
 
