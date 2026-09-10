@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ) || [];
 
         alert("Number of registered students found: " + students.length);
-
+   alert(JSON.stringify(students));
         const student = students.find(function (item) {
 
             return item.matric &&
