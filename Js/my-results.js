@@ -72,7 +72,62 @@ document.getElementById("printSemester").textContent =
         table.appendChild(row);
 
     });
+// Calculate Total Courses
 
+const totalCourses = myResults.length;
+
+document.getElementById("printTotalCourses").textContent =
+    totalCourses;
+
+
+// Calculate Average Score
+
+let totalScore = 0;
+
+myResults.forEach(function (result) {
+
+    totalScore += Number(result.score);
+
+});
+
+let averageScore = 0;
+
+if (myResults.length > 0) {
+
+    averageScore = totalScore / myResults.length;
+
+}
+
+document.getElementById("printAverageScore").textContent =
+    averageScore.toFixed(2);
+
+
+// Calculate Best Grade
+
+const gradeOrder = ["A", "B", "C", "D", "E", "F"];
+
+let bestGrade = "-";
+
+for (let i = 0; i < gradeOrder.length; i++) {
+
+    const found = myResults.some(function (result) {
+
+        return String(result.grade).toUpperCase() ===
+            gradeOrder[i];
+
+    });
+
+    if (found) {
+
+        bestGrade = gradeOrder[i];
+        break;
+
+    }
+
+}
+
+document.getElementById("printBestGrade").textContent =
+    bestGrade;
 });
 function printResult() {
 
