@@ -36,7 +36,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("printSemester").textContent =
         "First Semester";
+const cleanMatric = String(loggedInStudent.matric || "")
+    .trim()
+    .toUpperCase()
+    .replace(/\//g, "-");
 
+document.getElementById("resultNumber").textContent =
+    "FPG/2025-2026/" + cleanMatric;
     document.getElementById("printDate").textContent =
         new Date().toLocaleDateString();
 
