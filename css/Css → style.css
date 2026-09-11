@@ -112,3 +112,13 @@ td {
 tr:hover {
     background: #f4f6f9;
     }
+.signature-section {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.signature-box {
+    width: 45%;
+        }
