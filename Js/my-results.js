@@ -12,7 +12,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("studentName").innerHTML =
         loggedInStudent.fullname + "'s Results";
+document.getElementById("printStudentName").textContent =
+    loggedInStudent.fullname || "";
 
+document.getElementById("printMatricNumber").textContent =
+    loggedInStudent.matric || "";
+
+document.getElementById("printDepartment").textContent =
+    loggedInStudent.department || "";
+
+document.getElementById("printLevel").textContent =
+    loggedInStudent.level || "";
     const results = JSON.parse(
         localStorage.getItem("results")
     ) || [];
