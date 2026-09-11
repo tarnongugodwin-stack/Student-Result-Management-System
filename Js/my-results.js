@@ -23,6 +23,8 @@ document.getElementById("printDepartment").textContent =
 
 document.getElementById("printLevel").textContent =
     loggedInStudent.level || "";
+    document.getElementById("printDate").textContent =
+    new Date().toLocaleDateString();
     const results = JSON.parse(
         localStorage.getItem("results")
     ) || [];
