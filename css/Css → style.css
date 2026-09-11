@@ -122,3 +122,14 @@ tr:hover {
 .signature-box {
     width: 45%;
         }
+.school-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+.result-header {
+    text-align: center;
+}
