@@ -133,3 +133,53 @@ tr:hover {
 .result-header {
     text-align: center;
 }
+@media print {
+
+    body {
+        background: white;
+        margin: 0;
+        padding: 0;
+    }
+
+    .dashboard-container {
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+        border: 2px solid black;
+        box-sizing: border-box;
+    }
+
+    .result-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .school-logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+
+    th,
+    td {
+        padding: 8px;
+        text-align: center;
+    }
+
+    button,
+    a,
+    footer {
+        display: none !important;
+    }
+
+    }
