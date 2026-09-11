@@ -23,7 +23,11 @@ document.getElementById("printDepartment").textContent =
 
 document.getElementById("printLevel").textContent =
     loggedInStudent.level || "";
-    
+    document.getElementById("printSession").textContent =
+    "2025/2026";
+
+document.getElementById("printSemester").textContent =
+    "First Semester";
     document.getElementById("printDate").textContent =
     new Date().toLocaleDateString();
     
