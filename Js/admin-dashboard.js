@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
         failRate.toFixed(1) + "%";
 
 });
+
 function adminLogout() {
 
     localStorage.removeItem("adminLoggedIn");
