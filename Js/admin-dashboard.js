@@ -1,3 +1,6 @@
+if (localStorage.getItem("adminLoggedIn") !== "true") {
+    window.location.href = "index.html";
+}
 document.addEventListener("DOMContentLoaded", function () {
 
     // Get Students
