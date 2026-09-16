@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,12 +17,15 @@
         <p>Student Result Management System</p>
     </header>
 
+
     <main class="login-container">
 
         <h2>Admin Login</h2>
+
         <p>Please enter your administrator details.</p>
 
-        <form>
+
+        <form id="adminLoginForm">
 
             <label for="username">Username</label>
 
@@ -32,6 +36,7 @@
                 required
             >
 
+
             <label for="password">Password</label>
 
             <input
@@ -41,11 +46,16 @@
                 required
             >
 
-        <a href="admin-dashboard.html">
-    <button type="button">Login</button>
-        </a>
+
+            <button type="submit">
+                🔐 Login
+            </button>
 
         </form>
+
+
+        <p id="loginMessage"></p>
+
 
         <p>
             <a href="index.html">← Back to Home</a>
@@ -53,9 +63,73 @@
 
     </main>
 
+
     <footer>
         <p>Developed by TARNONGU AONDOHEMBA GODWIN</p>
     </footer>
 
+
+    <script>
+
+        document
+            .getElementById("adminLoginForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+
+                const username =
+                    document.getElementById("username").value.trim();
+
+                const password =
+                    document.getElementById("password").value.trim();
+
+                const message =
+                    document.getElementById("loginMessage");
+
+
+                /*
+                 * Administrator login details
+                 */
+
+                const correctUsername = "admin";
+                const correctPassword = "admin123";
+
+
+                if (
+                    username === correctUsername &&
+                    password === correctPassword
+                ) {
+
+                    localStorage.setItem(
+                        "adminLoggedIn",
+                        "true"
+                    );
+
+
+                    message.textContent =
+                        "Login successful! Redirecting...";
+
+
+                    setTimeout(function() {
+
+                        window.location.href =
+                            "admin-dashboard.html";
+
+                    }, 800);
+
+
+                } else {
+
+                    message.textContent =
+                        "Invalid username or password.";
+
+                }
+
+            });
+
+    </script>
+
 </body>
-  </html>
+
+    </html>
