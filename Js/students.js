@@ -1,164 +1,166 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const students = JSON.parse(
-        localStorage.getItem("students")
-    ) || [];
+    let students =
+        JSON.parse(localStorage.getItem("students")) || [];
 
-    const table = document.getElementById("studentsTable");
+    const table =
+        document.getElementById("studentsTable");
 
-    if (students.length === 0) {
+    const searchInput =
+        document.getElementById("studentSearch");
 
-        table.innerHTML = `
-            <tr>
-                <td colspan="6">No students registered yet.</td>
-            </tr>
-        `;
 
-        return;
+    function displayStudents(studentList) {
+
+        table.innerHTML = "";
+
+
+        studentList.forEach(function (student, index) {
+
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${index + 1}</td>
+
+                <td>${student.fullname || ""}</td>
+
+                <td>${student.matric || ""}</td>
+
+                <td>${student.department || ""}</td>
+
+                <td>${student.level || ""}</td>
+
+                <td>
+                    <button onclick="editStudent(${index})">
+                        ✏️ Edit
+                    </button>
+
+                    <button onclick="deleteStudent(${index})">
+                        🗑️ Delete
+                    </button>
+                </td>
+            `;
+
+            table.appendChild(row);
+
+        });
 
     }
 
-    students.forEach(function (student, index) {
 
-        const row = document.createElement("tr");
+    // Display all students
+    displayStudents(students);
 
-        row.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${student.fullname}</td>
-            <td>${student.matric}</td>
-            <td>${student.department}</td>
-            <td>${student.level}</td>
 
-            <td>
-                <button onclick="editStudent(${index})">
-                    ✏️ Edit
-                </button>
+    // Search students
+    searchInput.addEventListener("input", function () {
 
-                <button onclick="deleteStudent(${index})">
-                    🗑️ Delete
-                </button>
-            </td>
-        `;
+        const searchText =
+            searchInput.value.trim().toLowerCase();
 
-        table.appendChild(row);
+
+        const filteredStudents = students.filter(function (student) {
+
+            const name =
+                String(student.fullname || "").toLowerCase();
+
+            const matric =
+                String(student.matric || "").toLowerCase();
+
+
+            return (
+                name.includes(searchText) ||
+                matric.includes(searchText)
+            );
+
+        });
+
+
+        displayStudents(filteredStudents);
 
     });
 
-});
+
+    // Edit student
+    window.editStudent = function (index) {
+
+        const student = students[index];
+
+        const fullname = prompt(
+            "Enter Full Name:",
+            student.fullname
+        );
+
+        if (fullname === null) return;
 
 
-// ===============================
-// DELETE STUDENT
-// ===============================
+        const matric = prompt(
+            "Enter Matric Number:",
+            student.matric
+        );
 
-function deleteStudent(index) {
-
-    const students = JSON.parse(
-        localStorage.getItem("students")
-    ) || [];
+        if (matric === null) return;
 
 
-    const student = students[index];
+        const department = prompt(
+            "Enter Department:",
+            student.department
+        );
+
+        if (department === null) return;
 
 
-    const confirmDelete = confirm(
-        "Are you sure you want to delete " +
-        student.fullname +
-        "?"
-    );
+        const level = prompt(
+            "Enter Level:",
+            student.level
+        );
+
+        if (level === null) return;
 
 
-    if (!confirmDelete) {
-
-        return;
-
-    }
-
-
-    students.splice(index, 1);
+        student.fullname = fullname.trim();
+        student.matric = matric.trim();
+        student.department = department.trim();
+        student.level = level.trim();
 
 
-    localStorage.setItem(
-        "students",
-        JSON.stringify(students)
-    );
+        localStorage.setItem(
+            "students",
+            JSON.stringify(students)
+        );
 
 
-    alert("Student deleted successfully!");
-
-
-    location.reload();
-
-}
-
-
-// ===============================
-// EDIT STUDENT
-// ===============================
-
-function editStudent(index) {
-
-    const students = JSON.parse(
-        localStorage.getItem("students")
-    ) || [];
-
-
-    const student = students[index];
-
-
-    const fullname = prompt(
-        "Enter Full Name:",
-        student.fullname
-    );
-
-    if (fullname === null) return;
-
-
-    const matric = prompt(
-        "Enter Matric Number:",
-        student.matric
-    );
-
-    if (matric === null) return;
-
-
-    const department = prompt(
-        "Enter Department:",
-        student.department
-    );
-
-    if (department === null) return;
-
-
-    const level = prompt(
-        "Enter Level:",
-        student.level
-    );
-
-    if (level === null) return;
-
-
-    students[index] = {
-
-        ...student,
-
-        fullname: fullname,
-        matric: matric,
-        department: department,
-        level: level
+        displayStudents(students);
 
     };
 
 
-    localStorage.setItem(
-        "students",
-        JSON.stringify(students)
-    );
+    // Delete student
+    window.deleteStudent = function (index) {
+
+        const student = students[index];
 
 
-    alert("Student updated successfully!");
+        const confirmDelete = confirm(
+            "Are you sure you want to delete " +
+            student.fullname + "?"
+        );
 
 
-    location.reload();
+        if (!confirmDelete) return;
 
-}
+
+        students.splice(index, 1);
+
+
+        localStorage.setItem(
+            "students",
+            JSON.stringify(students)
+        );
+
+
+        displayStudents(students);
+
+    };
+
+});
