@@ -1,48 +1,148 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const results = JSON.parse(
-        localStorage.getItem("results")
-    ) || [];
+    const table =
+        document.getElementById("resultsTable");
 
-    const table = document.getElementById("resultsTable");
+    const searchInput =
+        document.getElementById("resultSearch");
 
-    if (results.length === 0) {
 
-        table.innerHTML = `
-            <tr>
-                <td colspan="6">No results uploaded yet.</td>
-            </tr>
-        `;
+    function displayResults(resultList) {
 
-        return;
+        table.innerHTML = "";
+
+
+        if (resultList.length === 0) {
+
+            table.innerHTML = `
+                <tr>
+                    <td colspan="6">
+                        No matching results found.
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+
+        resultList.forEach(function (result) {
+
+            const row =
+                document.createElement("tr");
+
+
+            /*
+             * Keep the original result index.
+             * This allows Edit and Delete to
+             * continue working after searching.
+             */
+
+            row.innerHTML = `
+                <td>${result.studentName || ""}</td>
+
+                <td>${result.matricNumber || ""}</td>
+
+                <td>${result.courseCode || ""}</td>
+
+                <td>${result.score || ""}</td>
+
+                <td>${result.grade || ""}</td>
+
+                <td>
+
+                    <button
+                        onclick="editResult(${result.originalIndex})">
+                        ✏️ Edit
+                    </button>
+
+                    <button
+                        onclick="deleteResult(${result.originalIndex})">
+                        🗑️ Delete
+                    </button>
+
+                </td>
+            `;
+
+
+            table.appendChild(row);
+
+        });
 
     }
 
-    results.forEach(function (result, index) {
 
-        const row = document.createElement("tr");
+    // Get results
+    let results =
+        JSON.parse(
+            localStorage.getItem("results")
+        ) || [];
 
-        row.innerHTML = `
-            <td>${result.studentName}</td>
-            <td>${result.matricNumber}</td>
-            <td>${result.courseCode}</td>
-            <td>${result.score}</td>
-            <td>${result.grade}</td>
 
-            <td>
-                <button onclick="editResult(${index})">
-                    ✏️ Edit
-                </button>
+    // Add original index to each result
+    results = results.map(function (result, index) {
 
-                <button onclick="deleteResult(${index})">
-                    🗑️ Delete
-                </button>
-            </td>
-        `;
-
-        table.appendChild(row);
+        return {
+            ...result,
+            originalIndex: index
+        };
 
     });
+
+
+    // Display all results
+    displayResults(results);
+
+
+    // Search results
+    if (searchInput) {
+
+        searchInput.addEventListener(
+            "input",
+            function () {
+
+                const searchText =
+                    searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+                const filteredResults =
+                    results.filter(function (result) {
+
+                        const studentName =
+                            String(
+                                result.studentName || ""
+                            ).toLowerCase();
+
+
+                        const matricNumber =
+                            String(
+                                result.matricNumber || ""
+                            ).toLowerCase();
+
+
+                        const courseCode =
+                            String(
+                                result.courseCode || ""
+                            ).toLowerCase();
+
+
+                        return (
+                            studentName.includes(searchText) ||
+                            matricNumber.includes(searchText) ||
+                            courseCode.includes(searchText)
+                        );
+
+                    });
+
+
+                displayResults(filteredResults);
+
+            }
+        );
+
+    }
 
 });
 
@@ -53,17 +153,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function deleteResult(index) {
 
-    const results = JSON.parse(
-        localStorage.getItem("results")
-    ) || [];
+    const results =
+        JSON.parse(
+            localStorage.getItem("results")
+        ) || [];
+
 
     const result = results[index];
 
-    const confirmDelete = confirm(
-        "Are you sure you want to delete the result for " +
-        result.studentName +
-        "?"
-    );
+
+    const confirmDelete =
+        confirm(
+            "Are you sure you want to delete the result for " +
+            result.studentName +
+            "?"
+        );
+
 
     if (!confirmDelete) {
 
@@ -71,14 +176,20 @@ function deleteResult(index) {
 
     }
 
+
     results.splice(index, 1);
+
 
     localStorage.setItem(
         "results",
         JSON.stringify(results)
     );
 
-    alert("Result deleted successfully!");
+
+    alert(
+        "Result deleted successfully!"
+    );
+
 
     location.reload();
 
@@ -91,41 +202,51 @@ function deleteResult(index) {
 
 function editResult(index) {
 
-    const results = JSON.parse(
-        localStorage.getItem("results")
-    ) || [];
+    const results =
+        JSON.parse(
+            localStorage.getItem("results")
+        ) || [];
+
 
     const result = results[index];
 
 
-    const studentName = prompt(
-        "Enter Student Name:",
-        result.studentName
-    );
+    const studentName =
+        prompt(
+            "Enter Student Name:",
+            result.studentName
+        );
+
 
     if (studentName === null) return;
 
 
-    const matricNumber = prompt(
-        "Enter Matric Number:",
-        result.matricNumber
-    );
+    const matricNumber =
+        prompt(
+            "Enter Matric Number:",
+            result.matricNumber
+        );
+
 
     if (matricNumber === null) return;
 
 
-    const courseCode = prompt(
-        "Enter Course Code:",
-        result.courseCode
-    );
+    const courseCode =
+        prompt(
+            "Enter Course Code:",
+            result.courseCode
+        );
+
 
     if (courseCode === null) return;
 
 
-    const score = prompt(
-        "Enter Score:",
-        result.score
-    );
+    const score =
+        prompt(
+            "Enter Score:",
+            result.score
+        );
+
 
     if (score === null) return;
 
@@ -134,7 +255,9 @@ function editResult(index) {
 
     let grade = "";
 
-    const numericScore = Number(score);
+    const numericScore =
+        Number(score);
+
 
     if (numericScore >= 70) {
 
@@ -167,11 +290,20 @@ function editResult(index) {
 
         ...result,
 
-        studentName: studentName,
-        matricNumber: matricNumber,
-        courseCode: courseCode,
-        score: numericScore,
-        grade: grade
+        studentName:
+            studentName.trim(),
+
+        matricNumber:
+            matricNumber.trim(),
+
+        courseCode:
+            courseCode.trim(),
+
+        score:
+            numericScore,
+
+        grade:
+            grade
 
     };
 
@@ -181,11 +313,13 @@ function editResult(index) {
         JSON.stringify(results)
     );
 
+
     alert(
         "Result updated successfully! Grade: " +
         grade
     );
 
+
     location.reload();
 
-        }
+}
