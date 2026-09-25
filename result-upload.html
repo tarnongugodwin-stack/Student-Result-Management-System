@@ -22,13 +22,31 @@
 
         <form id="resultForm">
 
-            <label>Student Name</label>
-            <input type="text" id="studentName"
-                   placeholder="Enter student name" required>
+            <label>Student</label>
 
-            <label>Matric Number</label>
-            <input type="text" id="matricNumber"
-                   placeholder="Enter matric number" required>
+<select id="studentSelect" required>
+
+    <option value="">
+        -- Select Student --
+    </option>
+
+</select>
+
+
+<label>Matric Number</label>
+
+<input
+    type="text"
+    id="matricNumber"
+    readonly
+    placeholder="Student matric number"
+>
+
+
+<input
+    type="hidden"
+    id="studentName"
+>
 
             <label>Course Code</label>
             <input type="text" id="courseCode"
