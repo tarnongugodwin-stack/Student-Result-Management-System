@@ -208,9 +208,11 @@ tr:hover {
     font-weight: bold;
     margin: 0;
     }
-/* ================================
+/* 
+================================
    ADMIN DASHBOARD STATISTICS
-================================ */
+================================ 
+*/
 
 .statistics-container {
     display: grid;
