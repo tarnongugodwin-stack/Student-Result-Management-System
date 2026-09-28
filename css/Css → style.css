@@ -368,7 +368,6 @@ table tr:hover {
     background: #e1efff;
 }
 
-
 /* Footer */
 
 footer {
@@ -380,4 +379,36 @@ footer {
 
 footer p {
     margin: 0;
+}
+body {
+    background: #eaf3ff !important;
+}
+
+header {
+    background: #003366 !important;
+    color: white !important;
+}
+
+header h1,
+header p {
+    color: white !important;
+}
+
+footer {
+    background: #003366 !important;
+    color: white !important;
+}
+
+.dashboard-card {
+    background: #ffffff !important;
+    border: 2px solid #0066cc !important;
+}
+
+.dashboard-card h3 {
+    color: #003366 !important;
+}
+
+button {
+    background: #0066cc !important;
+    color: white !important;
 }
