@@ -413,3 +413,44 @@ button {
     background: #0066cc !important;
     color: white !important;
 }
+/* FRONT PAGE */
+
+body {
+    background: #eef5ff !important;
+}
+
+main {
+    background: #ffffff !important;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 40px 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.10);
+    text-align: center;
+}
+
+main h2 {
+    color: #003366 !important;
+    font-size: 30px;
+}
+
+main p {
+    color: #444 !important;
+    line-height: 1.7;
+}
+
+main button {
+    background: #0066cc !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 25px;
+    margin: 10px;
+    border-radius: 7px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+main button:hover {
+    background: #003366 !important;
+}
